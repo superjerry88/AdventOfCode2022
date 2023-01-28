@@ -40,6 +40,7 @@ foreach (var line in lines)
     }
 }
 Console.WriteLine($"Part1: {counter}");
+
 counter = 0;
 foreach (var line in lines)
 {
