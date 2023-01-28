@@ -3,12 +3,12 @@
 var rowCount = lines.Length;
 var columnCount = lines[0].Length;
 
-var map = new int[rowCount,columnCount];
+var map = new int[rowCount, columnCount];
 for (var row = 0; row < lines.Length; row++)
 {
     for (var col = 0; col < lines[row].Length; col++)
     {
-        map[row,col]  = int.Parse(lines[row][col].ToString());
+        map[row, col] = int.Parse(lines[row][col].ToString());
     }
 }
 
@@ -20,6 +20,7 @@ for (var row = 0; row < rowCount; row++)
         if (IsVisible(row, col)) treeCounter++;
     }
 }
+
 Console.WriteLine($"Part1: {treeCounter}");
 
 var best = 0;
@@ -27,15 +28,16 @@ for (var row = 0; row < rowCount; row++)
 {
     for (var col = 0; col < columnCount; col++)
     {
-        var score= GetScore(row, col);
-        if(score > best) best = score;
+        var score = GetScore(row, col);
+        if (score > best) best = score;
     }
 }
+
 Console.WriteLine($"Part2: {best}");
 
 bool IsVisible(int x, int y)
 {
-    if (x == 0 || x == rowCount-1 || y == 0 || y == rowCount-1) return true;
+    if (x == 0 || x == rowCount - 1 || y == 0 || y == rowCount - 1) return true;
     var value = map[x, y];
     var row = GetRow(x);
     var col = GetColumn(y);
@@ -80,4 +82,3 @@ List<int> GetRow(int row)
         .Select(x => map[row, x])
         .ToList();
 }
-
