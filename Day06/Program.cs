@@ -1,7 +1,7 @@
 ﻿var line = File.ReadAllText("input.txt");
 
 Console.WriteLine($"Part1: {FindMarker(line,4)}");
-Console.WriteLine($"Part1: {FindMarker(line,14)}");
+Console.WriteLine($"Part2: {FindMarker(line,14)}");
 
 static int FindMarker(string input, int packetSize)
 {
