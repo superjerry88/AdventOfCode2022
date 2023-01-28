@@ -14,34 +14,35 @@ foreach (var line in lines)
         switch (line[0])
         {
             case 'U':
-                head.Y ++;
+                head.Y++;
                 break;
             case 'D':
                 head.Y--;
                 break;
             case 'L':
-                head.X --;
+                head.X--;
                 break;
             case 'R':
-                head.X ++;
+                head.X++;
                 break;
         }
-        
-        MoveTail(head,tail);
+
+        MoveTail(head, tail);
+        counter1.Add(tail.ToString());
+
         MoveTail(head, rope[0]);
         for (var length = 1; length < rope.Count; length++)
         {
             MoveTail(rope[length - 1], rope[length]);
         }
         counter2.Add(rope.Last().ToString());
-        counter1.Add(tail.ToString());
     }
 }
 
 Console.WriteLine($"Part1: {counter1.Count}");
 Console.WriteLine($"Part2: {counter2.Count}");
 
-void MoveTail( Pos start, Pos end)
+void MoveTail(Pos start, Pos end)
 {
     if (Math.Abs(end.X - start.X) == 1 && Math.Abs(end.Y - start.Y) == 1)
     {
@@ -96,6 +97,7 @@ void MoveTail( Pos start, Pos end)
 class Pos
 {
     public int X, Y;
+
     public override string ToString()
     {
         return $"[{X}][{Y}]";
