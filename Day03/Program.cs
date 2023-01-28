@@ -1,6 +1,4 @@
-﻿using System;
-
-var lines = File.ReadAllLines("input.txt");
+﻿var lines = File.ReadAllLines("input.txt");
 
 var counter = 0;
 foreach (var line in lines)
@@ -19,11 +17,9 @@ for (var i = 0; i < lines.Length/3; i++)
     var sack3 = lines[i*3+2].ToCharArray();
     counter += sack1.Intersect(sack2).Intersect(sack3).Sum(GetValue);
 }
-
 Console.WriteLine($"Part2: {counter}");
 
 static int GetValue(char value)
 {
-    if (char.IsLower(value)) return value - 'a' + 1;
-    return  value - 'A' + 27;
+    return char.IsLower(value) ? value - 'a' + 1 : value - 'A' + 27;
 }
